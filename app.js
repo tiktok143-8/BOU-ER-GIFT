@@ -170,10 +170,17 @@ function updatePagePhoto(idx) {
   if (!images.length) return;
 
   images.forEach((img, i) => {
-    img.style.opacity = i === idx ? '1' : '0';
+    img.style.opacity = '0';
+    img.classList.remove('is-active');
   });
-}
 
+  const activeImg = images[idx];
+
+  if (activeImg) {
+    activeImg.classList.add('is-active');
+    activeImg.style.opacity = '1';
+  }
+}
 function updateLeftPage(idx) {
   updatePagePhoto(idx);
 
@@ -712,7 +719,7 @@ function init() {
   hide(openBookEl);
   hide(navControls);
   hide(closeCta);
-
+updatePagePhoto(0);
   createLeaves();
   setSoundUI();
   initKeyboard();
