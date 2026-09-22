@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Reasons I Love You 💕 — A 3D Keepsake Book</title>
+  <meta name="description" content="A romantic 3D hardcover keepsake book — opens, turns pages through 4 heartfelt reasons, then closes in 3D.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background Birthday Music -->
+  <audio id="bgMusic" loop>
+    <source src="happy-birthday.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Ambient canvases & lighting -->
+  <canvas id="ambient-canvas" aria-hidden="true"></canvas>
+  <canvas id="cursor-canvas"  aria-hidden="true"></canvas>
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+  <div class="candlelight-overlay" aria-hidden="true"></div>
+
+  <!-- Top Controls intentionally hidden -->
+
+  <main class="app-wrapper" id="app">
+
+    <!-- Header Title -->
+    <header class="app-header">
+      <span class="sparkle-l" aria-hidden="true">✦</span>
+      <div class="title-group">
+        <h1 class="main-title">Special Wish For You</h1>
+        
+      </div>
+      <span class="sparkle-r" aria-hidden="true">✦</span>
+    </header>
+
+    <!-- ═══════════════════ BOOK SCENE ═══════════════════ -->
+    <section class="book-scene" id="book-scene" aria-label="3D Romantic Keepsake Book">
+
+      <!-- ─── CLOSED BOOK (3D Box) ─── -->
+      <div class="closed-book" id="closed-book" role="button" tabindex="0" aria-label="3D closed keepsake book. Click or press Enter to open.">
+        <!-- Front Cover -->
+        <div class="cb-face cb-face--front">
+          <div class="cb-corner cb-tl" aria-hidden="true"></div>
+          <div class="cb-corner cb-tr" aria-hidden="true"></div>
+          <div class="cb-corner cb-bl" aria-hidden="true"></div>
+          <div class="cb-corner cb-br" aria-hidden="true"></div>
+          <div class="cb-inner">
+            <p class="cb-sparkles" aria-hidden="true">✦ ✦ ✦</p>
+            <h2 class="cb-title">Reasons<br>I Love You</h2>
+            <span class="cb-heart" aria-hidden="true">❤️</span>
+          </div>
+        </div>
+        <!-- 3D Faces -->
+        <div class="cb-face cb-face--spine" aria-hidden="true"></div>
+        <div class="cb-face cb-face--pages" aria-hidden="true"></div>
+        <div class="cb-face cb-face--top"   aria-hidden="true"></div>
+        <div class="cb-face cb-face--bot"   aria-hidden="true"></div>
+        <div class="cb-face cb-face--back-cover" aria-hidden="true"></div>
+      </div>
+
+      <!-- Single Open CTA Button -->
+      <div class="open-cta" id="open-cta">
+        <button class="open-book-btn" id="btn-open-book" aria-label="Open the book">
+          <span class="btn-glow" aria-hidden="true"></span>
+          <span aria-hidden="true">📖</span>
+          <span>Open the Book</span>
+        </button>
+      </div>
+
+      <!-- ─── OPEN BOOK SPREAD ─── -->
+      <div class="open-book" id="open-book" aria-label="Open book spread">
+
+        <!-- Hardcover leather frame -->
+        <div class="book-frame" aria-hidden="true">
+          <div class="frame-corner fc-tl"></div>
+          <div class="frame-corner fc-tr"></div>
+          <div class="frame-corner fc-bl"></div>
+          <div class="frame-corner fc-br"></div>
+          <div class="frame-spine"></div>
+        </div>
+
+        <!-- Double-Page Spread -->
+        <div class="book-spread">
+
+          <!-- LEFT PAGE (Polaroid & Memory) -->
+          <div class="spread-page spread-page--left" id="spread-left" aria-label="Keepsake memory page">
+            <div class="page-texture" aria-hidden="true"></div>
+            <div class="page-border" aria-hidden="true"></div>
+            <div class="silk-ribbon" aria-hidden="true"><div class="ribbon-tail"></div></div>
+            <div class="left-inner">
+              <div class="polaroid-frame" id="polaroid-frame">
+                <div class="polaroid-img">
+                <div class="polaroid-scene" id="polaroid-scene">
+  <img class="page-photo" src="photo1.jpg" alt="Our memory">
+  <img class="page-photo" src="photo2.jpg" alt="Our memory">
+  <img class="page-photo" src="photo3.jpg" alt="Our memory">
+  <img class="page-photo" src="photo4.jpg" alt="Our memory">
+</div>
+                </div>
+                <p class="polaroid-caption" id="polaroid-caption">A quiet moment</p>
+              </div>
+              <div class="left-quote">
+                <p class="handwritten-note" id="handwritten-note">"এই পৃথিবীতে তোমার থেকে বেশি প্রিয় আমার কেও নেই"</p>
+                <span class="chapter-label" id="chapter-label">আমাদের কাটানো সোনালী সময়</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- CENTER SPINE -->
+          <div class="spread-spine" aria-hidden="true">
+            <div class="spine-sl"></div>
+            <div class="spine-sr"></div>
+          </div>
+
+          <!-- RIGHT PAGE (Leaf Stack) -->
+          <div class="spread-page spread-page--right" id="spread-right" aria-live="polite">
+            <!-- .page-leaf × 12 injected by app.js -->
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- .book-scene -->
+
+    <!-- Navigation Controls -->
+    <nav class="nav-controls" id="nav-controls" aria-label="Book navigation">
+      <button class="nav-btn nav-btn--next" id="btn-next" aria-label="Next page">
+        <span id="btn-next-text">Next Page</span>
+      </button>
+    </nav>
+
+    <!-- Final message shown after all four pages -->
+    <div class="close-cta" id="close-cta">
+      <div class="close-book-btn">Love You So Much Bou ❤️</div>
+    </div>
+
+  </main>
+
+  <script src="app.js"></script>
+
+  <!-- Start music after first click/tap -->
+  <script>
+    const bgMusic = document.getElementById("bgMusic");
+
+    function startBirthdayMusic() {
+      bgMusic.play().catch(() => {});
+    }
+
+    document.addEventListener("click", startBirthdayMusic, { once: true });
+    document.addEventListener("touchstart", startBirthdayMusic, { once: true });
+  </script>
+
+</body>
+</html>
