@@ -169,7 +169,7 @@ function updatePagePhoto(idx) {
 
   if (!images.length) return;
 
-  images.forEach((img, i) => {
+  images.forEach((img) => {
     img.style.opacity = '0';
     img.classList.remove('is-active');
   });
@@ -720,6 +720,7 @@ function init() {
   hide(navControls);
   hide(closeCta);
   createLeaves();
+  updatePagePhoto(0);
   setSoundUI();
   initKeyboard();
   initTouch();
