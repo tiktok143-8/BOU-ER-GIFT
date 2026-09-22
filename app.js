@@ -731,3 +731,4 @@ if (document.readyState === 'loading') {
 }
 
 })();
+document.body.classList.add('app-ready');
