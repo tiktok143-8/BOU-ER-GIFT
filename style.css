@@ -478,20 +478,19 @@ body {
 }
 
 #polaroid-scene .page-photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
   pointer-events: none;
+  opacity: 0;
+  transition: none !important;
 }
 
-#polaroid-scene .page-photo:not(:first-child) {
-  position: absolute;
-  inset: 0;
-}
-
-#polaroid-scene .page-photo:first-child {
-  position: relative;
+#polaroid-scene .page-photo.is-active {
+  opacity: 1;
 }
 .scene-stars { position: absolute; inset: 0; background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 18px 18px; opacity: 0.7; }
 .scene-moon { position: absolute; top: 16px; right: 18px; width: 24px; height: 24px; border-radius: 50%; background: #fff8e1; box-shadow: 0 0 14px #fff59d; }
