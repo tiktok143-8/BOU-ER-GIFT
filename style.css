@@ -1180,3 +1180,11 @@ kbd {
     line-height: 1.25;
   }
 }
+/* Prevent initial page flash before the book is ready */
+body {
+  visibility: hidden;
+}
+
+body.app-ready {
+  visibility: visible;
+}
