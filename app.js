@@ -309,51 +309,47 @@ function updateNavButtons() {
     }, 750);
   }
 
-  function nextPage() {
-    if (bookState !== 'reading' || isPageTurning) return;
+function nextPage() {
+  if (bookState !== 'reading' || isPageTurning) return;
 
-    // Last page
-    if (currentPage >= reasons.length - 1) {
-      show(closeCta);
-      return;
-    }
-
-    isPageTurning = true;
-
-    const nextPageIndex = currentPage + 1;
-    const leaf = leafEls[currentPage];
-
-    // Change the photo before the page-turn animation finishes
-    updatePagePhoto(nextPageIndex);
-
-    leaf.style.zIndex = 100;
-
-    leaf.classList.add('is-turning');
-    void leaf.offsetHeight;
-    leaf.classList.add('is-turned');
-
-    playFlipSound();
-
-    setTimeout(() => {
-      currentPage = nextPageIndex;
-
-      updateLeftPage(currentPage);
-      updateProgress();
-      updateNavButtons();
-
-      spawnHearts(
-        window.innerWidth / 2,
-        window.innerHeight / 2 - 40,
-        6
-      );
-    }, 550);
-
-    setTimeout(() => {
-      leaf.classList.remove('is-turning');
-      updateZIndices();
-      isPageTurning = false;
-    }, 1150);
+  // Last page
+  if (currentPage >= reasons.length - 1) {
+    show(closeCta);
+    return;
   }
+
+  isPageTurning = true;
+
+  const nextPageIndex = currentPage + 1;
+  const leaf = leafEls[currentPage];
+
+  // Page flip + sound শুরু একই click-এ
+  leaf.style.zIndex = 100;
+  leaf.classList.add('is-turning');
+  void leaf.offsetHeight;
+  leaf.classList.add('is-turned');
+
+  playFlipSound();
+
+  // Page flip-এর সাথে photo/content একসাথে change
+  currentPage = nextPageIndex;
+  updateLeftPage(currentPage);
+  updateProgress();
+  updateNavButtons();
+
+  spawnHearts(
+    window.innerWidth / 2,
+    window.innerHeight / 2 - 40,
+    6
+  );
+
+  // শুধু animation শেষ হওয়ার জন্য lock রাখা
+  setTimeout(() => {
+    leaf.classList.remove('is-turning');
+    updateZIndices();
+    isPageTurning = false;
+  }, 1150);
+}
 
   function prevPage() {
     if (bookState !== 'reading' || isPageTurning || currentPage <= 0) return;
