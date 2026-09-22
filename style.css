@@ -1182,21 +1182,19 @@ kbd {
 }
 /* Prevent image flash during initial loading */
 #polaroid-scene {
-  visibility: hidden;
-}
-
-#polaroid-scene.images-ready {
-  visibility: visible;
-}
-
 #polaroid-scene .page-photo {
-  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
 }
 
-#polaroid-scene .page-photo.is-active {
-  opacity: 1;
+#polaroid-scene .page-photo:not(:first-child) {
+  position: absolute;
+  inset: 0;
 }
 
-#polaroid-scene .page-photo {
-  transition: none !important;
+#polaroid-scene .page-photo:first-child {
+  position: relative;
 }
