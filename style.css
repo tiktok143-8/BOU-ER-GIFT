@@ -1180,11 +1180,23 @@ kbd {
     line-height: 1.25;
   }
 }
-/* Prevent initial page flash before the book is ready */
-body {
+/* Prevent image flash during initial loading */
+#polaroid-scene {
   visibility: hidden;
 }
 
-body.app-ready {
+#polaroid-scene.images-ready {
   visibility: visible;
+}
+
+#polaroid-scene .page-photo {
+  opacity: 0;
+}
+
+#polaroid-scene .page-photo.is-active {
+  opacity: 1;
+}
+
+#polaroid-scene .page-photo {
+  transition: none !important;
 }
