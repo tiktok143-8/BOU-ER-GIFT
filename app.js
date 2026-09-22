@@ -719,7 +719,6 @@ function init() {
   hide(openBookEl);
   hide(navControls);
   hide(closeCta);
-updatePagePhoto(0);
   createLeaves();
   setSoundUI();
   initKeyboard();
